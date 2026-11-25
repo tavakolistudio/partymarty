@@ -355,7 +355,7 @@ footer{position:relative;z-index:10;background:var(--n950);color:#fff;border-rad
 
 /* content sections after the 3D story */
 .csec{position:relative;z-index:10;padding:120px 24px}
-.csec .in{max-width:1200px;margin:0 auto}
+.csec .wrapx{max-width:1200px;margin:0 auto}
 .sec-head{max-width:44rem}
 .sec-head.c{margin:0 auto;text-align:center}
 .h-lg{font-family:var(--font-raleway);font-weight:500;color:var(--n950);letter-spacing:-0.03em;font-size:2.4rem;line-height:1;margin-top:20px}
@@ -481,6 +481,84 @@ a.inl:hover{text-decoration-color:var(--accent)}
 .faq details[open] summary{border-radius:1.55rem 1.55rem 0 0}
 .faq summary h3{margin:0;font-family:var(--font-raleway);font-weight:600;font-size:17px;color:var(--n950)}
 .faq .gi-in{border-radius:0 0 1.55rem 1.55rem;padding:0 24px 22px}
+
+/* ================= polish & usability ================= */
+/* header: frosted bar once the page scrolls, so text never collides with it */
+header{transition:opacity .8s var(--ease-out),transform .8s var(--ease-out),background .35s ease,height .35s ease,box-shadow .35s ease}
+header.scrolled{height:64px;background:rgba(255,255,255,.62);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,.7),0 8px 24px -12px rgba(14,42,197,.15)}
+@media (min-width:768px){header.scrolled{height:72px}}
+.wordmark{white-space:nowrap;font-size:15px;letter-spacing:.2em}
+@media (min-width:768px){.wordmark{font-size:20px;letter-spacing:.25em}}
+.hd-call{display:grid}
+@media (max-width:767px){header .contact-pill{display:none}}
+@media (min-width:768px){.hd-call{display:none}}
+[id]{scroll-margin-top:84px}
+
+/* hero CTAs + readability on small screens */
+.hero-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-ctas .pill{padding:6px 6px 6px 20px}
+.hero-ctas .pill:not(.dark){padding:12px 20px}
+@media (max-width:767px){
+  #hero{padding:0 0 calc(84px + env(safe-area-inset-bottom))}
+  #hero .hero-row{padding:140px 24px 8px;background:linear-gradient(to top,rgba(246,248,255,.96) 0%,rgba(246,248,255,.9) 62%,rgba(246,248,255,0) 100%)}
+  #hero .eyebrow{font-size:11px;line-height:1.5}
+  .hero-h{font-size:2.5rem}
+}
+
+/* package tag in flow — no overlap */
+.pkg .tag{position:static;margin-left:auto;padding:5px 10px}
+.pkg .card-head{flex-wrap:wrap;row-gap:8px}
+.pkg-form{margin-top:14px;display:inline-flex;align-items:center;gap:8px;align-self:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--n700);text-decoration:underline;text-decoration-color:rgba(64,64,64,.3);text-underline-offset:3px}
+.pkg-form:hover{color:var(--accent)}
+.pkg .pill{justify-content:space-between}
+
+/* clickable theme chips */
+.chips-h{margin-top:56px;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--n500)}
+.chips{margin-top:16px}
+.chips button{padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  font-family:var(--font-raleway);font-weight:600;font-size:14px;color:var(--n950);transition:background .2s,transform .2s}
+.chips button:hover{background:rgba(255,255,255,.75);transform:translateY(-1px)}
+.chips button.picked{background:var(--n950);color:#fff;border-color:var(--n950)}
+
+/* form footer + toast */
+.form-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px}
+.form-hint{font-family:var(--font-raleway);font-weight:500;font-size:12px;color:var(--n500);flex:1;min-width:200px}
+form.q input:invalid:not(:placeholder-shown){border-color:#ff4d6d}
+.toast{position:fixed;left:50%;bottom:96px;z-index:80;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:12px 18px;border-radius:999px;background:var(--n950);color:#fff;
+  font-family:var(--font-raleway);font-weight:500;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:all .35s var(--ease-out);white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (min-width:768px){.toast{bottom:32px}}
+
+/* mobile action bar */
+.actbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:36;display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:6px;padding:6px;border-radius:999px;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 30px -10px rgba(14,42,197,.3);
+  opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+body.ready .actbar{opacity:1;transform:none}
+.actbar a{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border-radius:999px;font-family:var(--font-raleway);font-weight:600;font-size:14px;color:var(--n950)}
+.actbar a.wa{background:var(--orb);color:#fff}
+.actbar .wa-ic{width:18px;height:18px}
+@media (max-width:767px){.wa-float{display:none}footer .f-body{padding-bottom:110px}}
+@media (min-width:768px){.actbar{display:none}}
+
+/* compact gallery: uniform tiles instead of tall masonry */
+.gal{columns:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (min-width:900px){.gal{grid-template-columns:repeat(4,1fr);gap:16px}}
+.g-it{margin:0!important}
+.g-in .ph{aspect-ratio:1/1!important;font-size:44px}
+.g-in img{aspect-ratio:1/1;object-fit:cover}
+.g-cap{left:8px;right:8px;bottom:8px;padding:8px 10px;gap:8px}
+.g-cap b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-cap small{display:none}
+@media (min-width:900px){.g-cap small{display:inline}}
+
+/* 3D layer fades away once the story is over, so it never sits behind the content */
+#stage{transition:opacity .6s ease}
+#stage.off{opacity:0}
+
+/* readable footer columns on phones */
+@media (max-width:639px){.f-cols{grid-template-columns:1fr 1fr}}
+
+@media (prefers-reduced-motion:reduce){.track{animation:none}.rv,.fu,.hi{transition:none!important;opacity:1!important;transform:none!important;filter:none!important}}
 </style>
 </head>
 <body>
@@ -500,7 +578,10 @@ a.inl:hover{text-decoration-color:var(--accent)}
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="7" y2="7"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="14" y1="17" y2="17"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+    <symbol id="i-pin"viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
   </defs>
 </svg>
 
@@ -521,8 +602,9 @@ a.inl:hover{text-decoration-color:var(--accent)}
     <a href="#bolge">Hizmetler</a><a href="#paketler">Paketler</a><a href="#galeri">Galeri</a><a href="#sss">SSS</a><a href="#teklif">Teklif Al</a>
   </nav>
   <div class="hd-right">
-    <button class="icon-btn" id="openDrawer" aria-label="Menü ve balon renkleri"><svg class="i"><use href="#i-sliders"/></svg></button>
+    <a href="tel:+905524563599" class="icon-btn hd-call" aria-label="Hemen ara"><svg class="i"><use href="#i-phone"/></svg></a>
     <a href="#" class="contact-pill wa-link" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">WhatsApp <span class="orb"><svg class="i"><use href="#i-chev"/></svg></span></a>
+    <button class="icon-btn" id="openDrawer" aria-label="Menüyü aç"><svg class="i"><use href="#i-menu"/></svg></button>
   </div>
 </header>
 
@@ -535,8 +617,12 @@ a.inl:hover{text-decoration-color:var(--accent)}
         <h1 class="hero-h hi" style="--y:22px;--d:.28s;--dur:1s">Renkli anlar.<br>Unutulmaz partiler.</h1>
       </div>
       <div class="hero-right pe hi" style="--y:14px;--d:.45s">
-        <p class="lead">Balon süslemeden pasta masasına, çocuğunuzun doğum gününü baştan sona biz hazırlıyoruz. Siz sadece kutlayın.</p>
-        <div class="credit">Bir Oyun Moyun markası</div>
+        <p class="lead">Konsept balon süslemeden çizgi film karakterli dekorlara, çocuğunuzun doğum gününü baştan sona biz hazırlıyoruz.</p>
+        <div class="hero-ctas">
+          <a href="#teklif" class="pill dark">Ücretsiz teklif al <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></a>
+          <a href="#paketler" class="pill">Paketler</a>
+        </div>
+        <div class="credit">Her gün 09:00–20:00 · Bir Oyun Moyun markası</div>
         <div class="scroll-cue"><svg class="i s35"><use href="#i-down"/></svg>Kaydır</div>
       </div>
     </div>
@@ -592,7 +678,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
 
   <!-- SERVICE AREA + SERVICES -->
   <section class="csec" id="bolge">
-    <div class="in">
+    <div class="wrapx">
       <div class="sec-head c">
         <div class="label fu">[ 05 — Hizmet bölgemiz ]</div>
         <h2 class="h-lg fu" style="--d:.08s">Yalova, Çiftlikköy ve Çınarcık'tayız.</h2>
@@ -627,7 +713,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
 
   <!-- THEMES + PACKAGES -->
   <section class="csec" id="paketler">
-    <div class="in">
+    <div class="wrapx">
       <div class="sec-head c">
         <div class="label fu">[ 06 — Paketler ]</div>
         <h2 class="h-lg fu" style="--d:.08s">Size uygun paketi seçin.</h2>
@@ -639,26 +725,29 @@ a.inl:hover{text-decoration-color:var(--accent)}
           <h3>Mini Parti</h3><p class="sub">Sade ve şık bir kutlama</p>
           <ul><li>Balon süsleme (tek renk grubu)</li><li>Rakam folyo balon</li><li>Pasta masası örtüsü ve süsü</li><li>Temaya uygun tabak & bardak seti</li></ul>
           <a href="#" class="pill wa-link" data-msg="Merhaba Party Marty, *Mini Parti* paketi hakkında bilgi ve fiyat almak istiyorum.">Fiyat sor <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></a>
+          <a href="#teklif" class="pkg-form" data-paket="Mini Parti"><svg class="i s35"><use href="#i-edit"/></svg>Bu paketle teklif formu doldur</a>
         </div></div>
         <div class="glass pkg hot fu" style="--d:.08s"><div class="gi-in"><span class="sheen"></span>
-          <span class="tag">En çok tercih edilen</span>
-          <div class="card-head"><span class="idx">02</span><span class="key">Eğlence</span></div>
+          <div class="card-head"><span class="idx">02</span><span class="key">Eğlence</span><span class="tag">En çok tercih edilen</span></div>
           <h3>Eğlence Paketi</h3><p class="sub">Tema konseptli tam kurulum</p>
           <ul><li>Tema konsept tasarımı</li><li>Organik balon zinciri / balon takı</li><li>Kişiye özel karşılama panosu</li><li>Pasta & ikram masası kurulumu</li><li>Tüm parti malzemeleri</li></ul>
           <a href="#" class="pill dark wa-link" data-msg="Merhaba Party Marty, *Eğlence Paketi* hakkında bilgi ve fiyat almak istiyorum.">Fiyat sor <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></a>
+          <a href="#teklif" class="pkg-form" data-paket="Eğlence Paketi"><svg class="i s35"><use href="#i-edit"/></svg>Bu paketle teklif formu doldur</a>
         </div></div>
         <div class="glass pkg fu" style="--d:.16s"><div class="gi-in"><span class="sheen"></span>
           <div class="card-head"><span class="idx">03</span><span class="key">Özel</span></div>
           <h3>Özel Parti</h3><p class="sub">Hayal ettiğiniz her şey</p>
           <ul><li>Eğlence Paketi'ndeki her şey</li><li>Fotoğraf köşesi & dekor objeleri</li><li>Hediyelik çantalar</li><li>Animatör / etkinlik desteği</li><li>Kurulum + toplama dahil</li></ul>
           <a href="#" class="pill wa-link" data-msg="Merhaba Party Marty, *Özel Parti* paketi hakkında bilgi ve fiyat almak istiyorum.">Fiyat sor <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></a>
+          <a href="#teklif" class="pkg-form" data-paket="Özel Parti"><svg class="i s35"><use href="#i-edit"/></svg>Bu paketle teklif formu doldur</a>
         </div></div>
       </div>
       <div class="glass vip fu"><div class="gi-in">👑 Oyun Moyun <b>Altın VIP</b> üyelerine doğum günü organizasyonunda <b>10.000 TL indirim</b></div></div>
       <p class="note fu">Fiyatlar tema, kişi sayısı ve mekâna göre değişir · Detaylı bilgi için WhatsApp'tan yazın</p>
 
+      <p class="chips-h fu">Bir tema seçin, teklif formuna ekleyelim:</p>
       <div class="chips fu">
-        <span>🎬 Çizgi film karakterleri</span><span>🦄 Unicorn</span><span>👑 Prenses</span><span>🚀 Uzay</span><span>🦖 Dinozor</span><span>🦸 Süper Kahraman</span><span>🧜 Deniz Kızı</span><span>🚗 Arabalar</span><span>🦁 Safari</span><span>⚽ Futbol</span><span>🌈 Gökkuşağı</span><span>🎪 Sirk</span><span>🏴‍☠️ Korsan</span>
+        <button type="button" data-tema="Çizgi film karakterleri">🎬 Çizgi film karakterleri</button><button type="button" data-tema="Unicorn">🦄 Unicorn</button><button type="button" data-tema="Prenses">👑 Prenses</button><button type="button" data-tema="Uzay">🚀 Uzay</button><button type="button" data-tema="Dinozor">🦖 Dinozor</button><button type="button" data-tema="Süper Kahraman">🦸 Süper Kahraman</button><button type="button" data-tema="Deniz Kızı">🧜 Deniz Kızı</button><button type="button" data-tema="Arabalar">🚗 Arabalar</button><button type="button" data-tema="Safari">🦁 Safari</button><button type="button" data-tema="Futbol">⚽ Futbol</button><button type="button" data-tema="Gökkuşağı">🌈 Gökkuşağı</button><button type="button" data-tema="Sirk">🎪 Sirk</button><button type="button" data-tema="Korsan">🏴‍☠️ Korsan</button>
       </div>
 
       <div class="steps">
@@ -672,7 +761,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
 
   <!-- GALLERY -->
   <section class="csec" id="galeri">
-    <div class="in">
+    <div class="wrapx">
       <div class="sec-head c">
         <div class="label fu">[ 07 — Galeri ]</div>
         <h2 class="h-lg fu" style="--d:.08s">Örnek çalışmalarımız.</h2>
@@ -695,7 +784,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
 
   <!-- FAQ -->
   <section class="csec" id="sss">
-    <div class="in">
+    <div class="wrapx">
       <div class="sec-head c">
         <div class="label fu">[ 08 — Sıkça sorulan sorular ]</div>
         <h2 class="h-lg fu" style="--d:.08s">Merak edilenler.</h2>
@@ -713,7 +802,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
 
   <!-- QUOTE + CONTACT -->
   <section class="csec" id="teklif">
-    <div class="in">
+    <div class="wrapx">
       <div class="sec-head">
         <div class="label fu">[ 09 — Teklif & İletişim ]</div>
         <h2 class="h-lg fu" style="--d:.08s">Partinizi birlikte<br>planlayalım.</h2>
@@ -723,7 +812,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
           <div class="card fu"><div class="card-in"><span class="sheen"></span><div class="card-head"><span class="idx">01</span><span class="key">Adres</span><span class="dot"></span></div>
             <div class="val">Hisar Sk. No:36, Yalova Merkez</div><div class="desc">Adnan Menderes Mah., 77100 Yalova · <a href="https://www.google.com/maps/dir//J7R5%2BVP+Yalova+Merkez,+Yalova" target="_blank" rel="noopener">Yol tarifi</a></div></div></div>
           <div class="card fu" style="--d:.06s"><div class="card-in"><span class="sheen"></span><div class="card-head"><span class="idx">02</span><span class="key">Telefon & WhatsApp</span><span class="dot"></span></div>
-            <div class="val"><a href="tel:+905524563599">+90 552 456 35 99</a></div><div class="desc"><a href="#" class="wa-link" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">WhatsApp'tan yazın</a></div></div></div>
+            <div class="val"><a href="tel:+905524563599">+90 552 456 35 99</a></div><div class="desc"><a href="#" class="wa-link" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">WhatsApp'tan yazın</a> · <a href="tel:+905524563599">Hemen arayın</a></div></div></div>
           <div class="card fu" style="--d:.12s"><div class="card-in"><span class="sheen"></span><div class="card-head"><span class="idx">03</span><span class="key">Çalışma saatleri</span><span class="dot"></span></div>
             <div class="val">Her gün · 09:00 – 20:00</div><div class="desc">Instagram: <a href="https://instagram.com/oyunmoyun.tr" target="_blank" rel="noopener">@oyunmoyun.tr</a></div></div></div>
           <div class="map fu" style="--d:.18s"><iframe title="Oyun Moyun konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=J7R5%2BVP+Yalova+Merkez,+Yalova&output=embed"></iframe></div>
@@ -733,12 +822,13 @@ a.inl:hover{text-decoration-color:var(--accent)}
           <form class="q" id="quote">
             <label>Adınız<input name="ad" required placeholder="Ad Soyad" /></label>
             <label>Çocuğun adı & yaşı<input name="cocuk" placeholder="Örn. Elif, 5 yaş" /></label>
-            <label>Parti tarihi<input name="tarih" type="date" /></label>
+            <label>Parti tarihi<input name="tarih" type="date" id="fTarih" /></label>
             <label>Kişi sayısı<input name="kisi" type="number" min="1" placeholder="Örn. 20" /></label>
-            <label>Paket<select name="paket"><option>Mini Parti</option><option selected>Eğlence Paketi</option><option>Özel Parti</option><option>Henüz karar vermedim</option></select></label>
-            <label>Mekân<select name="mekan"><option>Oyun Moyun</option><option>Ev / Bahçe</option><option>Başka bir mekân</option></select></label>
-            <label class="full">Tema / notlar<textarea name="not" rows="3" placeholder="Örn. Unicorn teması, pembe-lila renkler"></textarea></label>
-            <div class="full"><button type="submit" class="pill dark">WhatsApp ile gönder <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></button></div>
+            <label>Paket<select name="paket" id="fPaket"><option>Mini Parti</option><option selected>Eğlence Paketi</option><option>Özel Parti</option><option>Henüz karar vermedim</option></select></label>
+            <label>Bölge<select name="bolge"><option>Yalova Merkez</option><option>Çiftlikköy</option><option>Çınarcık</option></select></label>
+            <label>Mekân<select name="mekan"><option>Oyun Moyun</option><option>Ev / Bahçe</option><option>Salon / Başka bir mekân</option></select></label>
+            <label class="full">Tema / karakter / notlar<textarea name="not" id="fNot" rows="3" placeholder="Örn. Unicorn teması, pembe-lila renkler"></textarea></label>
+            <div class="full form-foot"><button type="submit" class="pill dark">WhatsApp ile gönder <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></button><span class="form-hint">Bilgileriniz WhatsApp mesajı olarak hazırlanır, gönder tuşuna siz basarsınız.</span></div>
           </form>
         </div></div>
       </div>
@@ -774,6 +864,13 @@ a.inl:hover{text-decoration-color:var(--accent)}
 
 <a class="wa-float wa-link" href="#" aria-label="WhatsApp ile yazın" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum."><svg class="wa-ic" viewBox="0 0 24 24"><use href="#i-wa"/></svg></a>
 
+<!-- Mobile action bar -->
+<nav class="actbar" aria-label="Hızlı iletişim">
+  <a href="tel:+905524563599"><svg class="i"><use href="#i-phone"/></svg>Ara</a>
+  <a href="#" class="wa-link wa" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum."><svg class="wa-ic" viewBox="0 0 24 24"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a href="#teklif"><svg class="i"><use href="#i-edit"/></svg>Teklif al</a>
+</nav>
+
 <!-- Lightbox -->
 <div id="lb" role="dialog" aria-modal="true" aria-label="Galeri">
   <button class="icon-btn x" aria-label="Kapat"><svg class="i"><use href="#i-x"/></svg></button>
@@ -807,20 +904,7 @@ a.inl:hover{text-decoration-color:var(--accent)}
   </div>
 </aside>
 
-<script type="module">
-import * as THREE from 'three';
-
-/* ================= shared state ================= */
-const control = { progress: 0, started: false };
-const mousePos = { x: 99, y: 99, isDown: false };
-
-window.addEventListener('pointermove', e => {
-  mousePos.x = (e.clientX / window.innerWidth) * 2 - 1;
-  mousePos.y = -(e.clientY / window.innerHeight) * 2 + 1;
-});
-window.addEventListener('mousedown', () => mousePos.isDown = true);
-window.addEventListener('mouseup',   () => mousePos.isDown = false);
-
+<script>
 /* ================= static content ================= */
 const words = ['Balon süsleme', 'Tema konsept', 'Pasta masası', 'Karşılama panosu', 'Parti başlasın'];
 const seq = words.map(w => `<span class="w"><b>${w}</b><i></i></span>`).join('');
@@ -847,6 +931,150 @@ const io2 = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 document.querySelectorAll('.fu').forEach(el => io2.observe(el));
 
+
+/* ================= drawer ================= */
+const drawerBox = document.getElementById('drawer');
+const scrim = document.getElementById('scrim');
+const openDrawer = () => { drawerBox.classList.add('open'); scrim.classList.add('open'); drawerBox.setAttribute('aria-hidden', 'false'); };
+const closeDrawer = () => { drawerBox.classList.remove('open'); scrim.classList.remove('open'); drawerBox.setAttribute('aria-hidden', 'true'); };
+document.getElementById('openDrawer').addEventListener('click', openDrawer);
+document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
+scrim.addEventListener('click', closeDrawer);
+window.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+/* ================= Party Marty: WhatsApp, gallery, form ================= */
+const WA_NUMBER = '905524563599';
+const waUrl = (msg) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+document.querySelectorAll('.wa-link').forEach(a => {
+  a.href = waUrl(a.dataset.msg || 'Merhaba Party Marty');
+  a.target = '_blank'; a.rel = 'noopener';
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('drNav').addEventListener('click', e => { if (e.target.closest('a')) closeDrawer(); });
+
+/* GALERİ — kendi fotoğraflarınızı images/gallery/ klasörüne koyun ve "src" alanına yazın.
+   src boş kalırsa renkli yer tutucu gösterilir. cat: balon | tema | masa | pano */
+const GALLERY = [
+  { src: '', cat: 'tema',  title: 'Unicorn konsept',      tag: 'Tema',  emoji: '🦄', bg: 'linear-gradient(135deg,#FFE3EC,#ECE6FF)', h: 1.25 },
+  { src: '', cat: 'balon', title: 'Organik balon takı',   tag: 'Balon', emoji: '🎈', bg: 'linear-gradient(135deg,#ECEFFF,#A8C1FF)', h: 0.8 },
+  { src: '', cat: 'masa',  title: 'Dinozor pasta masası', tag: 'Masa',  emoji: '🦖', bg: 'linear-gradient(135deg,#FBFFE2,#EFFE69)', h: 1 },
+  { src: '', cat: 'pano',  title: 'Karşılama panosu',     tag: 'Pano',  emoji: '🖼️', bg: 'linear-gradient(135deg,#F0F9FF,#96E5FF)', h: 1.3 },
+  { src: '', cat: 'tema',  title: 'Uzay macerası',        tag: 'Tema',  emoji: '🚀', bg: 'linear-gradient(135deg,#ECEFFF,#4D80FF)', h: 0.9 },
+  { src: '', cat: 'balon', title: 'Rakam balon buketi',   tag: 'Balon', emoji: '🎉', bg: 'linear-gradient(135deg,#FFF5F4,#FFA6B3)', h: 1.1 },
+  { src: '', cat: 'masa',  title: 'Prenses ikram masası', tag: 'Masa',  emoji: '👑', bg: 'linear-gradient(135deg,#FFF5F4,#FFECEB)', h: 1.25 },
+  { src: '', cat: 'tema',  title: 'Safari partisi',       tag: 'Tema',  emoji: '🦁', bg: 'linear-gradient(135deg,#FBFFE2,#DCFF32)', h: 0.85 },
+  { src: '', cat: 'pano',  title: 'Deniz kızı köşesi',    tag: 'Pano',  emoji: '🧜', bg: 'linear-gradient(135deg,#F0F9FF,#C9F1FF)', h: 1 },
+  { src: '', cat: 'karakter', title: 'Süper kahraman partisi', tag: 'Karakter', emoji: '🦸', bg: 'linear-gradient(135deg,#ECEFFF,#A8C1FF)', h: 1.15 },
+  { src: '', cat: 'karakter', title: 'Çizgi film karakter masası', tag: 'Karakter', emoji: '🎬', bg: 'linear-gradient(135deg,#FFF5F4,#FFA6B3)', h: 0.9 },
+  { src: '', cat: 'balon', title: 'Balon kapı & kemer',   tag: 'Balon', emoji: '🎈', bg: 'linear-gradient(135deg,#FBFFE2,#EFFE69)', h: 1 },
+];
+const galEl = document.getElementById('gal');
+const media = (it, big) => it.src
+  ? `<img src="${it.src}" alt="${it.title}" loading="lazy" />`
+  : `<div class="ph" style="background:${it.bg};${big ? '' : `aspect-ratio:1/${it.h || 1}`}">${it.emoji}</div>`;
+galEl.innerHTML = GALLERY.map((it, i) => `
+  <figure class="g-it fu" data-cat="${it.cat}" data-i="${i}" tabindex="0" style="margin:0 0 16px">
+    <div class="g-in">${media(it)}
+      <figcaption class="g-cap"><span class="idx">${String(i + 1).padStart(2, '0')}</span><b>${it.title}</b><small>${it.tag}</small></figcaption>
+    </div>
+  </figure>`).join('');
+galEl.querySelectorAll('.fu').forEach(el => io2.observe(el));
+
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x === b));
+  galEl.querySelectorAll('.g-it').forEach(g => g.classList.toggle('hide', b.dataset.f !== 'all' && g.dataset.cat !== b.dataset.f));
+});
+
+const lb = document.getElementById('lb');
+let lbCur = 0;
+const lbVisible = () => [...galEl.querySelectorAll('.g-it:not(.hide)')].map(g => +g.dataset.i);
+function lbShow(i) {
+  lbCur = i; const it = GALLERY[i];
+  document.getElementById('lbMedia').innerHTML = media(it, true);
+  document.getElementById('lbCap').textContent = it.title;
+  lb.classList.add('open');
+}
+const lbStep = d => { const v = lbVisible(); lbShow(v[(v.indexOf(lbCur) + d + v.length) % v.length]); };
+const lbClose = () => lb.classList.remove('open');
+galEl.addEventListener('click', e => { const g = e.target.closest('.g-it'); if (g) lbShow(+g.dataset.i); });
+galEl.addEventListener('keydown', e => { const g = e.target.closest('.g-it'); if (g && e.key === 'Enter') lbShow(+g.dataset.i); });
+lb.querySelector('.x').onclick = lbClose;
+lb.querySelector('.prev').onclick = () => lbStep(-1);
+lb.querySelector('.next').onclick = () => lbStep(1);
+lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+window.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') lbClose();
+  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'ArrowRight') lbStep(1);
+});
+
+document.getElementById('quote').addEventListener('submit', e => {
+  e.preventDefault();
+  const d = Object.fromEntries(new FormData(e.target));
+  const tarih = d.tarih ? new Date(d.tarih + 'T12:00').toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : '-';
+  const msg = 'Merhaba Party Marty, doğum günü süsleme için teklif almak istiyorum.\n\n' +
+    `👤 Ad: ${d.ad}\n🧒 Çocuk: ${d.cocuk || '-'}\n📅 Tarih: ${tarih}\n👥 Kişi sayısı: ${d.kisi || '-'}\n🎁 Paket: ${d.paket}\n🗺️ Bölge: ${d.bolge}\n📍 Mekân: ${d.mekan}\n📝 Tema / not: ${d.not || '-'}`;
+  window.open(waUrl(msg), '_blank', 'noopener');
+  toast('WhatsApp açılıyor — mesajı göndermeyi unutmayın 🎈');
+});
+
+/* ================= usability helpers ================= */
+const toastEl = Object.assign(document.createElement('div'), { className: 'toast', role: 'status' });
+document.body.appendChild(toastEl);
+let toastT;
+function toast(t) { toastEl.textContent = t; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('show'), 2600); }
+
+// frosted header after scrolling
+const hdr = document.querySelector('header');
+const onScrollHdr = () => hdr.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScrollHdr, { passive: true }); onScrollHdr();
+
+// no past dates
+const fTarih = document.getElementById('fTarih');
+const today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+fTarih.min = today.toISOString().slice(0, 10);
+
+// package → prefill form
+document.querySelectorAll('.pkg-form').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('fPaket').value = a.dataset.paket;
+  toast(`${a.dataset.paket} forma eklendi`);
+}));
+
+// theme chips → add to notes
+const fNot = document.getElementById('fNot');
+document.querySelector('.chips').addEventListener('click', e => {
+  const b = e.target.closest('button[data-tema]'); if (!b) return;
+  const tema = b.dataset.tema;
+  const parts = fNot.value.split(',').map(x => x.trim()).filter(Boolean);
+  const k = parts.findIndex(x => x === tema + ' teması');
+  if (k >= 0) { parts.splice(k, 1); b.classList.remove('picked'); toast(`${tema} çıkarıldı`); }
+  else { parts.push(tema + ' teması'); b.classList.add('picked'); toast(`${tema} teklif formuna eklendi`); }
+  fNot.value = parts.join(', ');
+});
+
+// failsafe: if the 3D scene can't load (slow network / old phone), never leave a blank page
+setTimeout(() => {
+  if (document.body.classList.contains('ready')) return;
+  document.getElementById('loader').classList.add('gone');
+  document.body.classList.add('ready');
+}, 6000);
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+/* ================= shared state ================= */
+const control = { progress: 0, started: false };
+const mousePos = { x: 99, y: 99, isDown: false };
+
+window.addEventListener('pointermove', e => {
+  mousePos.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mousePos.y = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+window.addEventListener('mousedown', () => mousePos.isDown = true);
+window.addEventListener('mouseup',   () => mousePos.isDown = false);
+
 /* ================= smooth scroll (Lenis-style) ================= */
 const drawerEl = document.getElementById('drawer');
 let ssTarget = window.scrollY, ssCurrent = window.scrollY, ssActive = false;
@@ -871,12 +1099,14 @@ window.addEventListener('scroll', () => { if (!ssActive) { ssCurrent = ssTarget 
 
 /* ================= scroll → progress + bg stage ================= */
 const bgEl = document.getElementById('bg');
+const stageBox = document.getElementById('stage');
 let bgStage = -1, scrollQueued = false;
 const updateProgress = () => {
   scrollQueued = false;
   const vh = window.innerHeight || 1;
   const progress = window.scrollY / vh;
   control.progress = progress;
+  stageBox.classList.toggle('off', window.scrollY > document.getElementById('bolge').offsetTop - vh * 0.6);
   const stage = progress > 1.55 ? 2 : progress > 0.7 ? 1 : 0;
   if (stage !== bgStage) {
     bgStage = stage;
@@ -1364,6 +1594,7 @@ const lCount = document.getElementById('lCount');
 const lStatus = document.getElementById('lStatus');
 let sceneReady = false;
 let loadVal = 0, lastT = performance.now(), leaving = false;
+const loaderT0 = performance.now();
 
 function onLoaderDone() {
   control.started = true;
@@ -1373,7 +1604,8 @@ function onLoaderDone() {
 (function loaderTick(now) {
   const dt = Math.min(0.05, (now - lastT) / 1000 || 0);
   lastT = now;
-  if (!sceneReady) loadVal += (92 - loadVal) * 1.7 * dt;
+  if (!sceneReady && now - loaderT0 > 3000) sceneReady = true; // never keep visitors waiting
+  if (!sceneReady) loadVal += (92 - loadVal) * 2.6 * dt;
   else {
     loadVal += (100 - loadVal) * 6 * dt;
     if (loadVal >= 99.4) loadVal = 100;
@@ -1431,91 +1663,6 @@ themesEl.addEventListener('click', e => {
 });
 document.getElementById('resetTheme').addEventListener('click', () => selectTheme('roseGold'));
 
-/* ================= drawer ================= */
-const scrim = document.getElementById('scrim');
-const openDrawer = () => { drawerEl.classList.add('open'); scrim.classList.add('open'); drawerEl.setAttribute('aria-hidden', 'false'); };
-const closeDrawer = () => { drawerEl.classList.remove('open'); scrim.classList.remove('open'); drawerEl.setAttribute('aria-hidden', 'true'); };
-document.getElementById('openDrawer').addEventListener('click', openDrawer);
-document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
-scrim.addEventListener('click', closeDrawer);
-window.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
-
-/* ================= Party Marty: WhatsApp, gallery, form ================= */
-const WA_NUMBER = '905524563599';
-const waUrl = (msg) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-document.querySelectorAll('.wa-link').forEach(a => {
-  a.href = waUrl(a.dataset.msg || 'Merhaba Party Marty');
-  a.target = '_blank'; a.rel = 'noopener';
-});
-document.getElementById('yr').textContent = new Date().getFullYear();
-document.getElementById('drNav').addEventListener('click', e => { if (e.target.closest('a')) closeDrawer(); });
-
-/* GALERİ — kendi fotoğraflarınızı images/gallery/ klasörüne koyun ve "src" alanına yazın.
-   src boş kalırsa renkli yer tutucu gösterilir. cat: balon | tema | masa | pano */
-const GALLERY = [
-  { src: '', cat: 'tema',  title: 'Unicorn konsept',      tag: 'Tema',  emoji: '🦄', bg: 'linear-gradient(135deg,#FFE3EC,#ECE6FF)', h: 1.25 },
-  { src: '', cat: 'balon', title: 'Organik balon takı',   tag: 'Balon', emoji: '🎈', bg: 'linear-gradient(135deg,#ECEFFF,#A8C1FF)', h: 0.8 },
-  { src: '', cat: 'masa',  title: 'Dinozor pasta masası', tag: 'Masa',  emoji: '🦖', bg: 'linear-gradient(135deg,#FBFFE2,#EFFE69)', h: 1 },
-  { src: '', cat: 'pano',  title: 'Karşılama panosu',     tag: 'Pano',  emoji: '🖼️', bg: 'linear-gradient(135deg,#F0F9FF,#96E5FF)', h: 1.3 },
-  { src: '', cat: 'tema',  title: 'Uzay macerası',        tag: 'Tema',  emoji: '🚀', bg: 'linear-gradient(135deg,#ECEFFF,#4D80FF)', h: 0.9 },
-  { src: '', cat: 'balon', title: 'Rakam balon buketi',   tag: 'Balon', emoji: '🎉', bg: 'linear-gradient(135deg,#FFF5F4,#FFA6B3)', h: 1.1 },
-  { src: '', cat: 'masa',  title: 'Prenses ikram masası', tag: 'Masa',  emoji: '👑', bg: 'linear-gradient(135deg,#FFF5F4,#FFECEB)', h: 1.25 },
-  { src: '', cat: 'tema',  title: 'Safari partisi',       tag: 'Tema',  emoji: '🦁', bg: 'linear-gradient(135deg,#FBFFE2,#DCFF32)', h: 0.85 },
-  { src: '', cat: 'pano',  title: 'Deniz kızı köşesi',    tag: 'Pano',  emoji: '🧜', bg: 'linear-gradient(135deg,#F0F9FF,#C9F1FF)', h: 1 },
-  { src: '', cat: 'karakter', title: 'Süper kahraman partisi', tag: 'Karakter', emoji: '🦸', bg: 'linear-gradient(135deg,#ECEFFF,#A8C1FF)', h: 1.15 },
-  { src: '', cat: 'karakter', title: 'Çizgi film karakter masası', tag: 'Karakter', emoji: '🎬', bg: 'linear-gradient(135deg,#FFF5F4,#FFA6B3)', h: 0.9 },
-  { src: '', cat: 'balon', title: 'Balon kapı & kemer',   tag: 'Balon', emoji: '🎈', bg: 'linear-gradient(135deg,#FBFFE2,#EFFE69)', h: 1 },
-];
-const galEl = document.getElementById('gal');
-const media = (it, big) => it.src
-  ? `<img src="${it.src}" alt="${it.title}" loading="lazy" />`
-  : `<div class="ph" style="background:${it.bg};${big ? '' : `aspect-ratio:1/${it.h || 1}`}">${it.emoji}</div>`;
-galEl.innerHTML = GALLERY.map((it, i) => `
-  <figure class="g-it fu" data-cat="${it.cat}" data-i="${i}" tabindex="0" style="margin:0 0 16px">
-    <div class="g-in">${media(it)}
-      <figcaption class="g-cap"><span class="idx">${String(i + 1).padStart(2, '0')}</span><b>${it.title}</b><small>${it.tag}</small></figcaption>
-    </div>
-  </figure>`).join('');
-galEl.querySelectorAll('.fu').forEach(el => io2.observe(el));
-
-document.getElementById('filters').addEventListener('click', e => {
-  const b = e.target.closest('button'); if (!b) return;
-  document.querySelectorAll('#filters button').forEach(x => x.classList.toggle('on', x === b));
-  galEl.querySelectorAll('.g-it').forEach(g => g.classList.toggle('hide', b.dataset.f !== 'all' && g.dataset.cat !== b.dataset.f));
-});
-
-const lb = document.getElementById('lb');
-let lbCur = 0;
-const lbVisible = () => [...galEl.querySelectorAll('.g-it:not(.hide)')].map(g => +g.dataset.i);
-function lbShow(i) {
-  lbCur = i; const it = GALLERY[i];
-  document.getElementById('lbMedia').innerHTML = media(it, true);
-  document.getElementById('lbCap').textContent = it.title;
-  lb.classList.add('open');
-}
-const lbStep = d => { const v = lbVisible(); lbShow(v[(v.indexOf(lbCur) + d + v.length) % v.length]); };
-const lbClose = () => lb.classList.remove('open');
-galEl.addEventListener('click', e => { const g = e.target.closest('.g-it'); if (g) lbShow(+g.dataset.i); });
-galEl.addEventListener('keydown', e => { const g = e.target.closest('.g-it'); if (g && e.key === 'Enter') lbShow(+g.dataset.i); });
-lb.querySelector('.x').onclick = lbClose;
-lb.querySelector('.prev').onclick = () => lbStep(-1);
-lb.querySelector('.next').onclick = () => lbStep(1);
-lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
-window.addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') lbClose();
-  if (e.key === 'ArrowLeft') lbStep(-1);
-  if (e.key === 'ArrowRight') lbStep(1);
-});
-
-document.getElementById('quote').addEventListener('submit', e => {
-  e.preventDefault();
-  const d = Object.fromEntries(new FormData(e.target));
-  const tarih = d.tarih ? new Date(d.tarih).toLocaleDateString('tr-TR') : '-';
-  const msg = 'Merhaba Party Marty, doğum günü süsleme için teklif almak istiyorum.\n\n' +
-    `👤 Ad: ${d.ad}\n🧒 Çocuk: ${d.cocuk || '-'}\n📅 Tarih: ${tarih}\n👥 Kişi sayısı: ${d.kisi || '-'}\n🎁 Paket: ${d.paket}\n📍 Mekân: ${d.mekan}\n📝 Not: ${d.not || '-'}`;
-  window.open(waUrl(msg), '_blank', 'noopener');
-});
 </script>
 </body>
 </html>
