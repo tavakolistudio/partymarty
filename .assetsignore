@@ -5,3 +5,4 @@ wrangler.jsonc
 .wrangler
 .DS_Store
 images/gallery/README.txt
+og-src.html
