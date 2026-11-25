@@ -539,7 +539,7 @@ body.ready .wa-float{opacity:1}
           <div class="card fu"><div class="card-in"><span class="sheen"></span><div class="card-head"><span class="idx">01</span><span class="key">Adres</span><span class="dot"></span></div>
             <div class="val">Hisar Sk. No:36, Yalova Merkez</div><div class="desc">Adnan Menderes Mah., 77100 Yalova · <a href="https://www.google.com/maps/dir//J7R5%2BVP+Yalova+Merkez,+Yalova" target="_blank" rel="noopener">Yol tarifi</a></div></div></div>
           <div class="card fu" style="--d:.06s"><div class="card-in"><span class="sheen"></span><div class="card-head"><span class="idx">02</span><span class="key">Telefon & WhatsApp</span><span class="dot"></span></div>
-            <div class="val"><a href="tel:+905050603599">0505 060 35 99</a></div><div class="desc"><a href="#" class="wa-link" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">WhatsApp'tan yazın</a></div></div></div>
+            <div class="val"><a href="tel:+905524563599">+90 552 456 35 99</a></div><div class="desc"><a href="#" class="wa-link" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">WhatsApp'tan yazın</a></div></div></div>
           <div class="card fu" style="--d:.12s"><div class="card-in"><span class="sheen"></span><div class="card-head"><span class="idx">03</span><span class="key">Çalışma saatleri</span><span class="dot"></span></div>
             <div class="val">Her gün · 09:00 – 20:00</div><div class="desc">Instagram: <a href="https://instagram.com/oyunmoyun.tr" target="_blank" rel="noopener">@oyunmoyun.tr</a></div></div></div>
           <div class="map fu" style="--d:.18s"><iframe title="Oyun Moyun konumu" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=J7R5%2BVP+Yalova+Merkez,+Yalova&output=embed"></iframe></div>
@@ -571,7 +571,7 @@ body.ready .wa-float{opacity:1}
       <div class="f-cta fu">
         <div class="f-label">[ Hadi kutlayalım ]</div>
         <h3 class="f-h">Hayalinizdeki<br>partiyi kuralım.</h3>
-        <a class="mail-pill wa-link" href="#" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">0505 060 35 99 <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></a>
+        <a class="mail-pill wa-link" href="#" data-msg="Merhaba Party Marty, doğum günü süsleme hakkında bilgi almak istiyorum.">+90 552 456 35 99 <span class="orb"><svg class="i"><use href="#i-upright"/></svg></span></a>
       </div>
       <div class="f-links">
         <div class="f-cols" id="fCols"></div>
@@ -616,7 +616,7 @@ body.ready .wa-float{opacity:1}
   <p class="dr-note" style="margin-top:8px">Partinizin rengini seçin — kaydırdıkça balonlar sarıya, sonra pembe bir kalbe dönüşür.</p>
   <div class="themes" id="themes"></div>
   <div class="dr-foot">
-    <div class="dr-meta"><span>TELEFON</span><span>0505 060 35 99</span></div>
+    <div class="dr-meta"><span>TELEFON</span><span>+90 552 456 35 99</span></div>
     <div class="dr-meta"><span>SAATLER</span><span>HER GÜN 09:00 – 20:00</span></div>
     <button class="reset" id="resetTheme"><svg class="i s35"><use href="#i-reset"/></svg>Varsayılan renk</button>
   </div>
@@ -644,7 +644,7 @@ document.getElementById('track').innerHTML = seq + seq;
 const cols = [
   ['Hizmetler', [['Balon süsleme', '#drop'], ['Tema konsept', '#drop'], ['Pasta masası', '#drop'], ['Paketler', '#paketler']]],
   ['Party Marty', [['Galeri', '#galeri'], ['Teklif al', '#teklif'], ['İletişim', '#iletisim'], ['Oyun Moyun', 'http://www.oyunmoyun.tr/']]],
-  ['Takip edin', [['Instagram', 'https://instagram.com/oyunmoyun.tr'], ['Yol tarifi', 'https://www.google.com/maps/dir//J7R5%2BVP+Yalova+Merkez,+Yalova'], ['Ara: 0505 060 35 99', 'tel:+905050603599']]],
+  ['Takip edin', [['Instagram', 'https://instagram.com/oyunmoyun.tr'], ['Yol tarifi', 'https://www.google.com/maps/dir//J7R5%2BVP+Yalova+Merkez,+Yalova'], ['Ara: +90 552 456 35 99', 'tel:+905524563599']]],
 ];
 document.getElementById('fCols').innerHTML = cols.map(([t, ls], i) =>
   `<div class="f-col fu" style="--d:${(i * 0.08).toFixed(2)}s"><h4>${t}</h4><ul>${
@@ -1255,7 +1255,7 @@ scrim.addEventListener('click', closeDrawer);
 window.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
 /* ================= Party Marty: WhatsApp, gallery, form ================= */
-const WA_NUMBER = '905050603599';
+const WA_NUMBER = '905524563599';
 const waUrl = (msg) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 document.querySelectorAll('.wa-link').forEach(a => {
   a.href = waUrl(a.dataset.msg || 'Merhaba Party Marty');
